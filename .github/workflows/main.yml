@@ -1,0 +1,43 @@
+name: Auto Build
+on:
+  push:
+    branches: [ master ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Check the contents of the file
+        uses: actions/checkout@v1
+        with:
+          ref: 'master'
+
+      - name: Configration on Ubuntu 18.04
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Deploy configration
+        run: |
+          mkdir ~/.ssh
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+          echo "${{ secrets.ACTIONS_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          chmod 400 ~/.ssh/id_rsa
+      - name: Build
+        run: |
+          yarn install
+          yarn generate
+      - name: Push to GitHub
+        env:
+          GITHUB_USER: "Takahiro-YSD"
+          GITHUB_EMAIL: "takahiro.yoshida@kikagaku.co.jp"
+        run: |
+          git config --local user.name "${GITHUB_USER}"
+          git config --local user.email "${GITHUB_EMAIL}"
+          git remote set-url origin git@github.com:Takahiro-YSD/test.git
+          git add -f docs
+          git add .
+          git commit -m "auto rebuilding site"
+          git push -f origin HEAD:master
