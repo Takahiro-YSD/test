@@ -29,6 +29,7 @@ jobs:
         run: |
           yarn install
           yarn generate
+          
       - name: Push to GitHub
         env:
           GITHUB_USER: "Takahiro-YSD"
