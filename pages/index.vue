@@ -41,7 +41,7 @@
               {
                   url: '#',
                   img_url: 'img/front/portfolio/image1.jpg',
-                  img_alt:'Preferred Networks社提供のChainerチュートリアル制作に協力',
+                  img_alt:'Preferred Networks提供のChainerチュートリアル制作に協力',
                   title:'Preferred Networks社提供の<span class="br__pc"></span>Chainerチュートリアル制作に協力'
               },
               {
