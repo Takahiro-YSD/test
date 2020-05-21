@@ -1,0 +1,21 @@
+{
+  "name": "corporate_sample",
+  "version": "1.0.0",
+  "description": "My bee&#39;s knees Nuxt.js project",
+  "author": "Takahiro_YSD",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "server": "http-server ./docs -o -p 8000"
+  },
+  "dependencies": {
+    "http-server": "^0.12.3",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {},
+  "main": "index.js",
+  "license": "MIT"
+}
